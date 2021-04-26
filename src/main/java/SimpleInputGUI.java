@@ -1,3 +1,5 @@
+import DeadClassInterface.DeadClassInterfaceDetector;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -49,16 +51,25 @@ public class SimpleInputGUI implements ActionListener {
         frame.setVisible(true);
 
     }
+    // path : /Users/Peeradon/IdeaProjects/DeadCodeDetection/src/main/java
+    // Desktop : /Users/Peeradon/Desktop
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == okButton){
             if(sourcePath.getText().isEmpty() || reportPath.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null,"Please enter source or report " +
-                        "path and try again!","Error Dialog",JOptionPane.PLAIN_MESSAGE);
+                        "path and try again!","Error Dialog",JOptionPane.WARNING_MESSAGE);
             }else {
                 if(deadType.equals("DeadClass/Interface")){
-
+                    DeadClassInterfaceDetector detector = new DeadClassInterfaceDetector();
+                    detector.setInputSource(sourcePath.getText());
+                    detector.run();
+                    detector.createReport(reportPath.getText());
+                    JOptionPane.showMessageDialog(null,"DeadClass/Interface " +
+                                    "are Detected! \nReport created at "+reportPath.getText()+".",
+                            "Message Dialog",JOptionPane.INFORMATION_MESSAGE);
+                    System.exit(0);
                 }
 
             }

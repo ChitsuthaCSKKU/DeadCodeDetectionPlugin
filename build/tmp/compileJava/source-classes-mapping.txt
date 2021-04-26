@@ -42,13 +42,13 @@ DeadClassInterface/DeadClassInterfaceDetector.java
  DeadClassInterface.DeadClassInterfaceDetector
 DeadClassInterface/Util/ObjectDeclarationVisitor.java
  DeadClassInterface.Util.ObjectDeclarationVisitor
+Files_Reader/File_Reader.java
+ Files_Reader.File_Reader
+Files_Reader/ASTParser.java
+ Files_Reader.ASTParser
+PluginAction.java
+ PluginAction
 SimpleInputGUI.java
  SimpleInputGUI
 MenuGUI.java
  MenuGUI
-PluginAction.java
- PluginAction
-Files_Reader/ASTParser.java
- Files_Reader.ASTParser
-Files_Reader/File_Reader.java
- Files_Reader.File_Reader

@@ -57,10 +57,7 @@ public class MenuGUI implements ActionListener {
 
     public static void main(String[] args) {
 //        new MenuGUI();
-//        new SimpleInputGUI("DeadClass/Interface");
-        DeadClassInterfaceDetector detector = new DeadClassInterfaceDetector();
-        detector.setInputSource("Adasdasdssa");
-        detector.run();
+        new SimpleInputGUI("DeadClass/Interface");
     }
 
     @Override
