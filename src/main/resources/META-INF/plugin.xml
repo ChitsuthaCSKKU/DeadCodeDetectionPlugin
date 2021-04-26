@@ -1,0 +1,33 @@
+<idea-plugin>
+    <id>org.deadcodedetection.plugins.deadcode_detection_plugins</id>
+    <name>deadcode_detection_plugins</name>
+    <vendor > CS-KKU </vendor>
+
+    <description> This is a plugins for detecting dead codes such as dead class, dead interface,
+    dead parameter, dead variable and dead method in java language. </description>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="org.deadcode.action.PopupDialogAction" class="PluginAction" text="Pop Dialog Action"
+                description="example action">
+            <override-text place="MainMenu" text="Pop Dialog Action"/>
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+
+<!--        <group id="org.deadcode.action.GroupedActions" text="Static Grouped Actions" popup="true">'-->
+<!--            <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="org.deadcode.action.PopupDialogAction"/>-->
+<!--            <action class="PluginAction" id="org.deadcode.action.GroupPopDialogAction"-->
+<!--                    text="A Group Action" description="Static group action example">-->
+<!--            </action>-->
+<!--        </group>-->
+
+    </actions>
+</idea-plugin>

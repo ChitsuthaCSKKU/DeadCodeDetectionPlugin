@@ -1,0 +1,34 @@
+<application>
+  <component name="ActionsLocalSummary">
+    <e n="EditorBackSpace">
+      <i c="9" l="1619406412288" />
+    </e>
+    <e n="EditorChooseLookupItem">
+      <i c="1" l="1619406415707" />
+    </e>
+    <e n="EditorDown">
+      <i c="1" l="1619406400908" />
+    </e>
+    <e n="EditorEnter">
+      <i c="1" l="1619406401220" />
+    </e>
+    <e n="EditorUp">
+      <i c="3" l="1619406401798" />
+    </e>
+    <e n="NewClass">
+      <i c="1" l="1619406393064" />
+    </e>
+    <e n="SaveAll">
+      <i c="1" l="1619406416779" />
+    </e>
+    <e n="WelcomeScreen.CreateNewProject">
+      <i c="1" l="1619406052602" />
+    </e>
+    <e n="com.intellij.ide.ReopenProjectAction">
+      <i c="8" l="1619421235642" />
+    </e>
+    <e n="com.intellij.openapi.fileEditor.impl.tabActions.CloseTab">
+      <i c="1" l="1619406434121" />
+    </e>
+  </component>
+</application>

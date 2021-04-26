@@ -1,0 +1,20 @@
+<idea-plugin>
+  <version>1.0</version>
+  <change-notes>
+      Add change notes here.&lt;br&gt;
+      &lt;em&gt;most HTML tags may be used&lt;/em&gt;</change-notes>
+  <idea-version since-build="203.7717" until-build="203.*"/>
+  <id>org.deadcodedetection.plugins.deadcode_detection_plugins</id>
+  <name>deadcode_detection_plugins</name>
+  <vendor> CS-KKU </vendor>
+  <description> This is a plugins for detecting dead codes such as dead class, dead interface,
+    dead parameter, dead variable and dead method in java language. </description>
+  <depends>com.intellij.modules.platform</depends>
+  <extensions defaultExtensionNs="com.intellij"/>
+  <actions>
+    <action id="org.deadcode.action.PopupDialogAction" class="PluginAction" text="Pop Dialog Action" description="example action">
+      <override-text place="MainMenu" text="Pop Dialog Action"/>
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+    </action>
+  </actions>
+</idea-plugin>
