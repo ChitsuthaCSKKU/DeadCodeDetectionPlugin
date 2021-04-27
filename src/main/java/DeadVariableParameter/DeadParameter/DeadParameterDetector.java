@@ -77,11 +77,16 @@ public class DeadParameterDetector {
     }
 
     //method to create report specific file name
-    public void createReport (String outputReportPath) throws IOException {
-        String fullFileName = "DeadParameter";
-        Output output = new Output();
-        output.createFile(outputReportPath, fullFileName);
-        output.sendInfo(this.classTokenList);
-        output.write(this.AstTime);
+    public void createReport (String outputReportPath) {
+        try {
+            String fullFileName = "DeadParameter";
+            Output output = new Output();
+            output.createFile(outputReportPath, fullFileName);
+            output.sendInfo(this.classTokenList);
+            output.write(this.AstTime);
+        }catch (IOException e){
+            System.out.println("Error in create Deadparameter report");
+            System.exit(0);
+        }
     }
 }

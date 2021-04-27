@@ -1,4 +1,4 @@
-import DeadClassInterface.DeadClassInterfaceDetector;
+import com.intellij.openapi.ui.ComboBox;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,19 +9,21 @@ public class MenuGUI implements ActionListener {
 
     private final JFrame frame;
     private final JPanel panel;
-    private final JComboBox comboBox;
+    private final ComboBox comboBox;
     private final JButton okButton;
     private final JLabel homeLebel;
 
     public MenuGUI() {
 
+        // path: /Users/Peeradon/IdeaProjects/DeadCodeDetection/src
+        // Desktop: /Users/Peeradon/Desktop
+
         // Create a Frame
         frame = new JFrame();
 
-
         //Create a ComboBox
         String[] deadCodes = {"-","DeadClass/Interface","DeadMethod","DeadParameter","DeadVariable"};
-        comboBox = new JComboBox(deadCodes);
+        comboBox = new ComboBox(deadCodes);
         comboBox.addActionListener(this);
 
         //Create a Button
@@ -42,22 +44,20 @@ public class MenuGUI implements ActionListener {
         panel.add(comboBox);
         panel.add(okButton);
 
-
         // Setting GUI
 
         frame.add(panel,BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Dead Code Detection");
+        frame.setTitle("Dead Code Detector");
 
         frame.setBounds(500,500,500,500);
         frame.pack();
+
+
+        frame.setLocationRelativeTo(null);
+
         frame.setVisible(true);
 
-    }
-
-    public static void main(String[] args) {
-//        new MenuGUI();
-        new SimpleInputGUI("DeadClass/Interface");
     }
 
     @Override
@@ -65,16 +65,30 @@ public class MenuGUI implements ActionListener {
         if(comboBox.getSelectedItem().equals("DeadClass/Interface") &&
             e.getSource()==okButton){
             new SimpleInputGUI("DeadClass/Interface");
-            setFrameVisible(false);
-        }
-    }
-
-    public void setFrameVisible(boolean b){
-        if(b == false){
             frame.setVisible(false);
-        }else{
-            frame.setVisible(true);
         }
+
+        if(comboBox.getSelectedItem().equals("DeadParameter") &&
+                e.getSource()==okButton){
+            new SimpleInputGUI("DeadParameter");
+            frame.setVisible(false);
+        }
+
+        if(comboBox.getSelectedItem().equals("DeadVariable") &&
+                e.getSource()==okButton){
+            new SimpleInputGUI("DeadVariable");
+            frame.setVisible(false);
+        }
+        if(comboBox.getSelectedItem().equals("DeadMethod") &&
+                e.getSource()==okButton){
+            new DeadMethodGUI();
+            frame.setVisible(false);
+        }
+        if(comboBox.getSelectedItem().equals("-") && e.getSource()==okButton) {
+            JOptionPane.showMessageDialog(null,"Please Select DeadCode Type!",
+                    "Error Dialog",JOptionPane.WARNING_MESSAGE);
+        }
+
     }
 
 }

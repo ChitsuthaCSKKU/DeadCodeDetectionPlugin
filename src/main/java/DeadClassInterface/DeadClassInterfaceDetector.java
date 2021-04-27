@@ -25,6 +25,7 @@ public class DeadClassInterfaceDetector {
 
     public void run(){
         start = System.currentTimeMillis();
+        System.out.println("========= Dead Class/Interface Detection =========");
 
         System.out.println("Parsing file to AST ...");
         ASTParser astParser = new ASTParser(inputSource);

@@ -16,9 +16,9 @@
 
     <actions>
         <!-- Add your actions here -->
-        <action id="org.deadcode.action.PopupDialogAction" class="PluginAction" text="Pop Dialog Action"
-                description="example action">
-            <override-text place="MainMenu" text="Pop Dialog Action"/>
+        <action id="org.deadcode.action.PopupDialogAction" class="PluginAction" text="Dead Code Detector"
+                description="DeadCodeDetection Plugin">
+            <override-text place="MainMenu" text="Dead Code Detector"/>
             <add-to-group group-id="ToolsMenu" anchor="first"/>
         </action>
 

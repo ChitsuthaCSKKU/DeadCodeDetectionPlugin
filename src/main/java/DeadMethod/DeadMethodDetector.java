@@ -36,7 +36,6 @@ public class DeadMethodDetector {
 
     private List<String> allSearchPaths = new ArrayList<>();
 
-    private List<CompilationUnit> sourceCu = new ArrayList<>();
     private List<String> allSourcePaths = new ArrayList<>();
 
     private String inputSearchPath;
@@ -47,6 +46,8 @@ public class DeadMethodDetector {
     public void run(){
 
         start = System.currentTimeMillis();
+
+        System.out.println("========= Dead Method Detection =========");
 
         System.out.println("Setting Paths ...");
         setSources(inputSourcePath);
@@ -71,7 +72,7 @@ public class DeadMethodDetector {
 
     // Method for using .jar library
     public void setJarLibs(String jarPath){
-        System.out.println("Setting Jar Library Path ...");
+
         if(!(jarPath == null) || !jarPath.equals("") || !jarPath.equals(" ")){
             try {
                 jarPaths.addAll(new File_Reader().readJarPath(jarPath));

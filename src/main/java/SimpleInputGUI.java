@@ -1,4 +1,6 @@
 import DeadClassInterface.DeadClassInterfaceDetector;
+import DeadVariableParameter.DeadParameter.DeadParameterDetector;
+import DeadVariableParameter.DeadVariable.DeadVariableDetector;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +12,9 @@ public class SimpleInputGUI implements ActionListener {
 
     private final JFrame frame;
     private final JPanel panel;
+    private final JPanel buttonPanel;
     private final JButton okButton;
+    private final JButton backButton;
     private final JTextField sourcePath;
     private final JTextField reportPath;
     private final JLabel sourceLabel;
@@ -21,9 +25,13 @@ public class SimpleInputGUI implements ActionListener {
         this.deadType = type;
         frame = new JFrame();
         panel = new JPanel();
+        buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout());
 
-        okButton = new JButton("OK");
+        okButton = new JButton("Ok");
         okButton.addActionListener(this);
+        backButton = new JButton("Back");
+        backButton.addActionListener(this);
 
         sourcePath = new JTextField();
         sourcePath.setPreferredSize(new Dimension(700,10));
@@ -40,19 +48,23 @@ public class SimpleInputGUI implements ActionListener {
         panel.add(sourcePath);
         panel.add(reportLabel);
         panel.add(reportPath);
-        panel.add(okButton);
+        buttonPanel.add(okButton);
+        buttonPanel.add(backButton);
 
-        frame.add(panel,BorderLayout.CENTER);
+        Container container = frame.getContentPane();
+        container.add(panel);
+        container.add(buttonPanel,BorderLayout.SOUTH);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Dead Code Detection");
+        frame.setTitle("Dead Code Detector");
 
-        frame.setBounds(300,300,250,250);
         frame.pack();
+
+        frame.setLocationRelativeTo(null);
+
         frame.setVisible(true);
 
     }
-    // path : /Users/Peeradon/IdeaProjects/DeadCodeDetection/src/main/java
-    // Desktop : /Users/Peeradon/Desktop
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -61,23 +73,41 @@ public class SimpleInputGUI implements ActionListener {
                 JOptionPane.showMessageDialog(null,"Please enter source or report " +
                         "path and try again!","Error Dialog",JOptionPane.WARNING_MESSAGE);
             }else {
+                String source = sourcePath.getText();
+                String report = reportPath.getText();
+
                 if(deadType.equals("DeadClass/Interface")){
                     DeadClassInterfaceDetector detector = new DeadClassInterfaceDetector();
-                    detector.setInputSource(sourcePath.getText());
+                    detector.setInputSource(source);
                     detector.run();
-                    detector.createReport(reportPath.getText());
+                    detector.createReport(report);
                     JOptionPane.showMessageDialog(null,"DeadClass/Interface " +
                                     "are Detected! \nReport created at "+reportPath.getText()+".",
                             "Message Dialog",JOptionPane.INFORMATION_MESSAGE);
-                    System.exit(0);
                 }
-
+                if(deadType.equals("DeadParameter")){
+                    DeadParameterDetector deadParameterDetector = new DeadParameterDetector();
+                    deadParameterDetector.setInputSource(source);
+                    deadParameterDetector.run();
+                    deadParameterDetector.createReport(report);
+                    JOptionPane.showMessageDialog(null,"DeadParameter " +
+                                    "are Detected! \nReport created at "+reportPath.getText()+".",
+                            "Message Dialog",JOptionPane.INFORMATION_MESSAGE);
+                }
+                if(deadType.equals("DeadVariable")){
+                    DeadVariableDetector deadVariableDetector = new DeadVariableDetector();
+                    deadVariableDetector.setInputSource(source);
+                    deadVariableDetector.run();
+                    deadVariableDetector.createReport(report);
+                    JOptionPane.showMessageDialog(null,"DeadVariable " +
+                                    "are Detected! \nReport created at "+reportPath.getText()+".",
+                            "Message Dialog",JOptionPane.INFORMATION_MESSAGE);
+                }
             }
-
-
-            //            JOptionPane.showMessageDialog(null,"You selected " +
-//                    "DeadClass/Interface","Message Dialog",JOptionPane.PLAIN_MESSAGE);
-//            System.exit(0);
+        }
+        if(e.getSource() == backButton){
+            frame.setVisible(false);
+            new MenuGUI();
         }
     }
 
